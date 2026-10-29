@@ -1,0 +1,289 @@
+/* ====================================================
+   GLOBAL CSS — Shalu, My Monkuu — In Every Lifetime
+   Premium Cinematic Full-Screen Design System
+   ==================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Dancing+Script:wght@400;600;700&family=Lato:ital,wght@0,300;0,400;1,300&display=swap');
+
+/* ---- Design Tokens ---- */
+:root {
+  --burgundy:        #421526;
+  --burgundy-deep:   #200a12;
+  --rosewood:        #6D293F;
+  --rose:            #E8A6B7;
+  --rose-deep:       #c97490;
+  --blush:           #F4D9E1;
+  --ivory:           #FFF8F0;
+  --ivory-warm:      #FEF3E8;
+  --champagne:       #D8B56A;
+  --champagne-light: #f0d898;
+  --champagne-pale:  #FBF0D0;
+  --dusty-rose:      #C58B9D;
+  --mauve:           #A9798C;
+  --mauve-light:     #c9a0b5;
+  --text-on-dark:    #F4D9E1;
+  --font-serif:      'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-cormorant:  'Cormorant Garamond', Georgia, serif;
+  --font-script:     'Dancing Script', cursive;
+  --font-body:       'Lato', sans-serif;
+  --ease-smooth:     cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:     cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out:        cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--burgundy-deep);
+  color: var(--text-on-dark);
+  overflow-x: hidden;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0,0,0,0); border: 0;
+}
+
+/* ---- Full-Screen Scene Base ---- */
+.scene-fullscreen {
+  position: relative;
+  width: 100%;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ---- Premium Buttons ---- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px 48px;
+  background: linear-gradient(135deg, #c9a04a 0%, var(--champagne) 40%, #f0d898 65%, var(--champagne) 100%);
+  color: var(--burgundy-deep);
+  font-family: var(--font-serif);
+  font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(216,181,106,0.5), 0 1px 0 rgba(255,255,255,0.3) inset;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.35) 50%, transparent 70%);
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.btn-primary:hover::after { transform: translateX(120%); }
+.btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(216,181,106,0.6); }
+.btn-primary:active { transform: scale(0.97); }
+
+/* YES button */
+.btn-yes {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px 52px;
+  background: linear-gradient(135deg, #a33050 0%, var(--rose-deep) 50%, #e08aa0 100%);
+  color: white;
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  box-shadow: 0 6px 32px rgba(201,116,144,0.6), 0 1px 0 rgba(255,255,255,0.2) inset;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.3s ease;
+  white-space: nowrap;
+  min-width: 200px;
+}
+.btn-yes:hover { transform: translateY(-4px) scale(1.04); box-shadow: 0 16px 44px rgba(201,116,144,0.65); }
+.btn-yes:active { transform: scale(0.97); }
+
+/* NO button */
+.btn-no {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 52px;
+  background: rgba(40,10,20,0.55);
+  color: var(--blush);
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: 1.5px solid rgba(232,166,183,0.3);
+  border-radius: 60px;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.12s var(--ease-spring);
+  white-space: nowrap;
+  user-select: none;
+  touch-action: none;
+  min-width: 200px;
+}
+.btn-no:hover { transform: scale(1.02); }
+
+/* Next button */
+.next-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 36px;
+  background: rgba(216,181,106,0.07);
+  color: var(--champagne);
+  border: 1px solid rgba(216,181,106,0.3);
+  border-radius: 40px;
+  font-family: var(--font-serif);
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+.next-btn:hover { background: rgba(216,181,106,0.16); transform: translateX(4px); }
+
+/* ---- Typography Scale ---- */
+.title-hero {
+  font-family: var(--font-script);
+  font-size: clamp(3.5rem, 10vw, 7.5rem);
+  color: var(--champagne);
+  line-height: 1.1;
+  text-shadow: 0 0 70px rgba(216,181,106,0.55), 0 2px 20px rgba(0,0,0,0.5);
+}
+.title-section {
+  font-family: var(--font-script);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  color: var(--champagne);
+  line-height: 1.2;
+  text-shadow: 0 0 30px rgba(216,181,106,0.25);
+}
+.text-serif-lg {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.85;
+  color: var(--blush);
+}
+.text-serif-md {
+  font-family: var(--font-cormorant);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.9;
+  color: var(--blush);
+}
+.section-eyebrow {
+  font-family: var(--font-body);
+  font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--champagne);
+  opacity: 0.65;
+  margin-bottom: 10px;
+}
+
+/* ---- Skip Button ---- */
+.skip-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(255,255,255,0.04);
+  color: rgba(255,255,255,0.3);
+  border: 1px solid rgba(255,255,255,0.09);
+  padding: 9px 22px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  backdrop-filter: blur(10px);
+}
+.skip-btn:hover { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.65); }
+
+/* ---- Progress bar ---- */
+.progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--rosewood), var(--champagne), var(--rose));
+  transition: width 0.6s ease;
+  z-index: 9998;
+  box-shadow: 0 0 10px rgba(216,181,106,0.6);
+}
+
+/* ---- Ornament ---- */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--champagne);
+  opacity: 0.4;
+  margin: 20px auto;
+  width: fit-content;
+}
+.ornament-divider::before, .ornament-divider::after {
+  content: '';
+  width: 60px;
+  height: 1px;
+  background: currentColor;
+  display: block;
+}
+
+/* ---- Replay ---- */
+.replay-btn {
+  background: transparent;
+  color: rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 10px 28px;
+  border-radius: 20px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: all 0.35s ease;
+}
+.replay-btn:hover { color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.2); background: rgba(255,255,255,0.04); }
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--burgundy-deep); }
+::-webkit-scrollbar-thumb { background: var(--rosewood); border-radius: 2px; }
+
+/* ---- Responsive ---- */
+@media (max-width: 640px) {
+  .btn-primary { padding: 16px 32px; }
+  .btn-yes, .btn-no { padding: 16px 28px; min-width: 130px; font-size: 0.95rem; }
+}
+
+/* ---- Reduced Motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
